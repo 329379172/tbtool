@@ -19,12 +19,12 @@ RUN yum install -y supervisor
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisord.conf
-EXPOSE 80
 ADD nginx.conf /etc/nginx/
 ADD site /etc/nginx/conf.d
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD src /usr/share/nginx/html/zfblog
 ADD composer.phar /usr/bin/composer
+ADD ln -s /usr/local/php/bin/php /usr/bin/php
 RUN cd /usr/share/nginx/html/zfblog && composer install
 RUN chown -R www:www /usr/share/nginx/html/zfblog
+EXPOSE 80
 CMD ["/usr/bin/supervisord"]
