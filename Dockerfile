@@ -1,5 +1,6 @@
 FROM centos
 RUN yum install -y epel-release
+RUN yum install -y git
 RUN yum install -y gcc automake autoconf libtool make
 RUN yum install -y libxml2-devel gd-devel libmcrypt-devel libcurl-devel openssl-devel
 ENV PHP_VERSION php-7.0.0
