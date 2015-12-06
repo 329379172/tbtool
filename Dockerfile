@@ -24,7 +24,7 @@ EXPOSE 80
 ADD nginx.conf /etc/nginx/
 ADD site /etc/nginx/conf.d
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-ADD zfblog /usr/share/nginx/html/zfblog
+ADD src /usr/share/nginx/html/zfblog
 ADD composer.phar /usr/bin/composer
 RUN cd /usr/share/nginx/html/zfblog && composer install
 RUN chown -R www:www /usr/share/nginx/html/zfblog
