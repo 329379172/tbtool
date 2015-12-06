@@ -9,7 +9,6 @@ RUN cd $PHP_VERSION && make
 RUN cd $PHP_VERSION && make install
 RUN mv /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 RUN ln -s /usr/local/php/sbin/php-fpm /usr/sbin/php-fpm
-RUN cat /usr/local/php/etc/php-fpm.d/www.conf.default
 RUN groupadd www
 RUN useradd www -g www
 ADD php-fpm.conf /usr/local/php/etc/php-fpm.conf
@@ -23,7 +22,7 @@ ADD nginx.conf /etc/nginx/
 ADD site /etc/nginx/conf.d
 ADD src /usr/share/nginx/html/zfblog
 ADD composer.phar /usr/bin/composer
-ADD ln -s /usr/local/php/bin/php /usr/bin/php
+RUN ln -s /usr/local/php/bin/php /usr/bin/php
 RUN cd /usr/share/nginx/html/zfblog && composer install
 RUN chown -R www:www /usr/share/nginx/html/zfblog
 EXPOSE 80
