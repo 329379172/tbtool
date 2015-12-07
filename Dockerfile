@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:7
 RUN yum install -y epel-release
 RUN yum install -y git
 RUN yum install -y gcc automake autoconf libtool make
@@ -14,17 +14,19 @@ RUN groupadd www
 RUN useradd www -g www
 ADD php-fpm.conf /usr/local/php/etc/php-fpm.conf
 ADD php-fpm/www.conf /usr/local/php/etc/php-fpm.d/www.conf
+ADD libunwind-1.1-3.sdl7.x86_64.rpm libunwind-1.1-3.sdl7.x86_64.rpm
+RUN rpm -Uvh libunwind-1.1-3.sdl7.x86_64.rpm
 RUN yum install -y nginx && chown -R www:www /var/lib/nginx
 RUN yum install -y supervisor
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisord.conf
-ADD nginx.conf /etc/nginx/
-ADD site /etc/nginx/conf.d
-ADD src /usr/share/nginx/html/zfblog
-ADD composer.phar /usr/bin/composer
-RUN ln -s /usr/local/php/bin/php /usr/bin/php
-RUN cd /usr/share/nginx/html/zfblog && composer install
-RUN chown -R www:www /usr/share/nginx/html/zfblog
+#ADD nginx.conf /etc/nginx/
+#ADD site /etc/nginx/conf.d
+#ADD src /usr/share/nginx/html/zfblog
+#ADD composer.phar /usr/bin/composer
+#RUN ln -s /usr/local/php/bin/php /usr/bin/php
+#RUN cd /usr/share/nginx/html/zfblog && composer install
+#RUN chown -R www:www /usr/share/nginx/html/zfblog
 EXPOSE 80
 CMD ["/usr/bin/supervisord"]
