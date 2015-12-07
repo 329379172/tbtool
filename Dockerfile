@@ -21,12 +21,12 @@ RUN yum install -y supervisor
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 ADD supervisord.conf /etc/supervisord.conf
-#ADD nginx.conf /etc/nginx/
-#ADD site /etc/nginx/conf.d
-#ADD src /usr/share/nginx/html/zfblog
-#ADD composer.phar /usr/bin/composer
-#RUN ln -s /usr/local/php/bin/php /usr/bin/php
-#RUN cd /usr/share/nginx/html/zfblog && composer install
-#RUN chown -R www:www /usr/share/nginx/html/zfblog
+ADD nginx.conf /etc/nginx/
+ADD site /etc/nginx/conf.d
+ADD src /usr/share/nginx/html/zfblog
+ADD composer.phar /usr/bin/composer
+RUN ln -s /usr/local/php/bin/php /usr/bin/php
+RUN cd /usr/share/nginx/html/zfblog && composer install
+RUN chown -R www:www /usr/share/nginx/html/zfblog
 EXPOSE 80
 CMD ["/usr/bin/supervisord"]
