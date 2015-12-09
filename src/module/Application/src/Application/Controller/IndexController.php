@@ -18,6 +18,7 @@ class IndexController extends AbstractActionController
     {
 	echo '<h1>Hello World!</h1>';
 	echo '<h2>updated!</h2>';
+	echo '<h3>呵呵</h3>';
 	exit;
         #return new ViewModel();
     }
