@@ -3,6 +3,7 @@ RUN yum install -y epel-release
 RUN yum install -y gcc automake autoconf libtool make
 RUN yum install -y libxml2-devel gd-devel libmcrypt-devel libcurl-devel openssl-devel
 ADD php-7.0.0.zip php-7.0.0.zip
+RUN yum install -y unzip
 RUN unzip php-7.0.0.zip
 RUN cd php-7.0.0 && ls && ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --enable-shared --with-libxml-dir --with--mysql --with-gd --with-openssl --enable-mbstring --with-mcrypt --with-mysqli --enable-opcache --enable-mysqlnd --enable-zip --with-zlib-dir --with-pdo-mysql --with-jpeg-dir --with-freetype-dir --with-curl --without-pdo-sqlite --without-sqlite3
 RUN cd php-7.0.0 && make
