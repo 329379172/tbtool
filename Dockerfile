@@ -1,6 +1,5 @@
 FROM centos:7
 RUN yum install -y epel-release
-RUN yum install -y git
 RUN yum install -y gcc automake autoconf libtool make
 RUN yum install -y libxml2-devel gd-devel libmcrypt-devel libcurl-devel openssl-devel
 ADD php-7.0.0.zip php-7.0.0.zip
@@ -24,9 +23,6 @@ ADD supervisord.conf /etc/supervisord.conf
 ADD nginx.conf /etc/nginx/
 ADD site /etc/nginx/conf.d
 ADD src /usr/share/nginx/html/zfblog
-#ADD composer.phar /usr/bin/composer
-#RUN ln -s /usr/local/php/bin/php /usr/bin/php
-#RUN cd /usr/share/nginx/html/zfblog && composer install
 RUN chown -R www:www /usr/share/nginx/html/zfblog
 EXPOSE 80
 CMD ["/usr/bin/supervisord"]
