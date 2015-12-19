@@ -32,7 +32,18 @@ return [
                                 'may_terminate' => true
                             ]
                         ]
-                    ]
+                    ],
+					'webqq' => [
+						'type' => 'literal',
+						'options' => [
+							'route' => '/webqq',
+							'defaults' => [
+								'controller' => 'LongDaiController',
+								'action' => 'webqq'
+							]
+						],
+						'may_terminate' => true
+					]
                 ]
             ]
         ],

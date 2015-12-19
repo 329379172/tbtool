@@ -49,5 +49,40 @@ class LongDaiController extends Controller{
         }
     }
 
-
+	public function webqqAction(){
+        $return = [];
+        $longDaiService = $this->serviceLocator->get('LongDai');
+        $log = $this->getServiceLocator()->get('log');
+		$method = $this->getRequest()->getMethod();
+		if($method === Request::METHOD_GET){
+            $log->addInfo('不处理GET请求');
+			exit;
+		}	
+		$http = new Http();
+        $body = $http->getRawRequest();
+        $params = json_decode($body, true);
+        $content = $params["content"];
+        $pattern = '/http:\/\/[a-zA-z\.\?\=\/0-9]+/i';
+        $matchCount = preg_match_all($pattern, $content, $urls);
+        $log->addInfo(json_encode($urls));
+        if($matchCount > 0){
+            foreach($urls[0] as $val){
+                $log->addInfo($val);
+                $ret = $longDaiService->grabRedBagByUrl($val, "15201238838");
+                if($ret !== false){
+                    $return[] = json_decode($ret);
+                }
+                $ret = $longDaiService->grabRedBagByUrl($val, "13733987253");
+                if($ret !== false){
+                    $return[] = json_decode($ret);
+                }
+            }
+            $log->addInfo(json_decode($return));
+            echo 'ok';
+            exit;
+        } else {
+            echo 'no';
+            exit;
+        }
+	}
 }
