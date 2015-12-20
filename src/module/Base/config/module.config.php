@@ -44,8 +44,8 @@ return [
         ]
     ],
     'xq_mail' => [
-        'mail_to' => '329379172@qq.com',
-        'mail_from' => '654894727@163.com'
+        'mail_to' => '654894727@qq.com',
+        'mail_from' => '15201238838@163.com'
     ],
     'redis' => [
         'scheme' => 'tcp',
