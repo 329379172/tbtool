@@ -35,17 +35,17 @@ return [
         ]
     ],
     'mail' => [
-        'name' => 'qq',
-        'host' => 'smtp.qq.com',
+        'name' => '163',
+        'host' => 'smtp.163.com',
         'connection_class' => 'login',
         'connection_config' => [
-            'username' => '',
-            'password' => ''
+            'username' => '15201238838@163.com',
+            'password' => 'wangwenhao'
         ]
     ],
     'xq_mail' => [
         'mail_to' => '329379172@qq.com',
-        'mail_from' => '329379172@qq.com'
+        'mail_from' => '654894727@163.com'
     ],
     'redis' => [
         'scheme' => 'tcp',
