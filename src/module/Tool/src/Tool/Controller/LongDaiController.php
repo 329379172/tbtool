@@ -68,11 +68,11 @@ class LongDaiController extends Controller{
         if($matchCount > 0){
             foreach($urls[0] as $val){
                 $log->addInfo($val);
-                $ret = $longDaiService->grabRedBagByUrl($val, "15201238838");
+                $ret = $longDaiService->grabRedBagByUrl($val, "15110088376");
                 if($ret !== false){
                     $return[] = json_decode($ret);
                 }
-                $ret = $longDaiService->grabRedBagByUrl($val, "13733987253");
+                $ret = $longDaiService->grabRedBagByUrl($val, "15201238838");
                 if($ret !== false){
                     $return[] = json_decode($ret);
                 }
