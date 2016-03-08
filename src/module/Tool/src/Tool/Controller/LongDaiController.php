@@ -72,14 +72,14 @@ class LongDaiController extends Controller{
                 if($ret !== false){
                     $return[] = json_decode($ret);
                 }
-                $ret = $longDaiService->grabRedBagByUrl($val, "15110088376");
+                /*$ret = $longDaiService->grabRedBagByUrl($val, "15110088376");
                 if($ret !== false){
                     $return[] = json_decode($ret);
                 }
                 $ret = $longDaiService->grabRedBagByUrl($val, "15201238838");
                 if($ret !== false){
                     $return[] = json_decode($ret);
-                }
+                }*/
             }
             $log->addInfo(json_decode($return));
             echo 'ok';
