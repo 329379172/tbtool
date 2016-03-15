@@ -16,11 +16,13 @@ class LongDaiService
 
     public function grabRedBagByUrl($url, $phone)
     {
+        $log = $this->getServiceLocator()->get('log');
         $response = Requests::get($url);
         $this->responseCache = $response;
         $shareRed = $this->getShareRed();
         if ($shareRed && trim($shareRed)) {
             $grabResponse = Requests::post('http://m.longdai.com/grabRedReward?phone='. $phone . '&shareRed=' . $shareRed);
+            $log->addInfo($grabResponse->body);
             return $grabResponse->body;
         } else {
             return false;
@@ -32,6 +34,8 @@ class LongDaiService
     {
         $response = Requests::get($url);
         $this->responseCache = $response;
+        $log = $this->getServiceLocator()->get('log');
+        $log->addInfo($response->url);
         return $response->url;
     }
 
