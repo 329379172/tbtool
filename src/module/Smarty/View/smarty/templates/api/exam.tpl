@@ -49,7 +49,7 @@
 
     <!-- The fav icon -->
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <script src="//libs.useso.com/js/angular.js/1.0.1/angular.min.js"></script>
+    <script src="//cdn.cdnjs.net/angular.js/1.0.1/angular.min.js"></script>
 </head>
 
 <body>
